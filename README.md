@@ -18,6 +18,7 @@ import { SampleData } from "i45-sample-data";
 console.log("SampleData", SampleData.JsonData.States); // outputs a list of states information to the console.
 console.log("SampleData", SampleData.KeyValueLists.States); // outputs a list of states and abbreviations to the console.
 console.log("SampleData", SampleData.Lists.Astronomy); // outputs a list of astronomical terms to the console.
+console.log("SampleData", SampleData.Objects.KeyCodes); // outputs a complex object with keyboard codes grouped by function.
 ```
 
 ## Sample Output
@@ -65,17 +66,13 @@ console.log(SampleData.JsonData.TriviaQuestions);
 ];
 ```
 
-## Using with a React Component (App.jsx)
+## Using a React Component (App.jsx)
 
 ```javascript
 import "./App.css";
 import { SampleData } from "i45-sample-data";
 
 function App() {
-  console.log("SampleData", SampleData.JsonData.States); // outputs a list of states information to the console.
-  console.log("SampleData", SampleData.KeyValueLists.States); // outputs a list of states and abbreviations to the console.
-  console.log("SampleData", SampleData.Lists.Astronomy); // outputs a list of astronomical terms to the console.
-
   // iterate over a list of trivia questions and create divs with the information.
   return (
     <>
@@ -97,3 +94,10 @@ function App() {
 
 export default App;
 ```
+
+## Sources
+
+The sample data in this package is pulled from various sources:
+
+- [Nano Taboada](https://gist.github.com/nanotaboada)
+- [Dummy APIs](https://dummyjson.com/docs/recipes)
