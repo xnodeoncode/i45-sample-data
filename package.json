@@ -11,8 +11,20 @@
   "keywords": [
     "JSON",
     "data",
-    "sample"
+    "sample data",
+    "test data",
+    "development data",
+    "datasets"
   ],
   "author": "CIS Guru <cisguru@outlook.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://github.com/xnodeoncode/i45-sample-data",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xnodeoncode/i45-sample-data.git"
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/xnodeoncode/i45-sample-data/issues"
+  }
 }
