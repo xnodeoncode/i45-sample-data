@@ -5,6 +5,10 @@
  * https://gist.github.com/mshafrir/2646763
  * https://gist.github.com/jpriebe/d62a45e29f24e843c974
  * https://gist.github.com/nanotaboada
+ * https://dummyjson.com/
+ * https://www.mockaroo.com/
+ * https://www.generatedata.com/
+ *
  */
 
 import { Lists } from "./lists/lists.js";

@@ -10,3 +10,10 @@
 
 - Update README.md.
 - Added GitHub urls.
+
+### v0.0.0-alpha.3
+
+- Updated README.md.
+- Added more sample data.
+
+### v0.0.0-alpha.4

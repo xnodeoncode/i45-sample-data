@@ -1,8 +1,8 @@
 # i45 Sample Data
 
-NodeJS package: ()[https://www.npmjs.com/package/i45-sample-data]
+[Node JS Package](https://www.npmjs.com/package/i45-sample-data)
 
-This is a library of sample datasets that can be used during testing and development. The datasets are in various formats such as lists, key/value lists, and object arrays.
+A library of sample datasets that can be used during testing and development.
 
 ## Installation
 
@@ -101,3 +101,6 @@ The sample data in this package is pulled from various sources:
 
 - [Nano Taboada](https://gist.github.com/nanotaboada)
 - [Dummy APIs](https://dummyjson.com/docs/recipes)
+- [Jason Priebe](https://gist.github.com/jpriebe)
+- [Michael Shafrir](https://gist.github.com/mshafrir/2646763)
+- [Open Trivia Database](https://opentdb.com/)
