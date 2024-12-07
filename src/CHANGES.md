@@ -17,3 +17,6 @@
 - Added more sample data.
 
 ### v0.0.0-alpha.4
+
+- Added samples for Students and Countries.
+- Implemented REST API call.

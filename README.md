@@ -19,6 +19,13 @@ console.log("SampleData", SampleData.JsonData.States); // outputs a list of stat
 console.log("SampleData", SampleData.KeyValueLists.States); // outputs a list of states and abbreviations to the console.
 console.log("SampleData", SampleData.Lists.Astronomy); // outputs a list of astronomical terms to the console.
 console.log("SampleData", SampleData.Objects.KeyCodes); // outputs a complex object with keyboard codes grouped by function.
+console.log("Key Codes", SampleData.Objects.KeyCodes);
+console.log("Students", SampleData.JsonData.Students);
+console.log("Countries", SampleData.JsonData.Countries);
+console.log(
+  "Rest API call",
+  await SampleData.from("https://jsonplaceholder.typicode.com/posts", "")
+);
 ```
 
 ## Sample Output
@@ -95,6 +102,18 @@ function App() {
 export default App;
 ```
 
+## REST API Call
+
+```javascript
+import { SampleData } from "i45-sample-data";
+
+var data = await SampleData.from(
+  "https://jsonplaceholder.typicode.com/posts",
+  ""
+);
+console.log("Data from API", data);
+```
+
 ## Sources
 
 The sample data in this package is pulled from various sources:
@@ -103,4 +122,6 @@ The sample data in this package is pulled from various sources:
 - [Dummy APIs](https://dummyjson.com/docs/recipes)
 - [Jason Priebe](https://gist.github.com/jpriebe)
 - [Michael Shafrir](https://gist.github.com/mshafrir/2646763)
+- [Felix Bellanger](https://gist.github.com/keeguon)
 - [Open Trivia Database](https://opentdb.com/)
+- [JSON Placeholder](https://jsonplaceholder.typicode.com);

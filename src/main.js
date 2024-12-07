@@ -8,6 +8,8 @@
  * https://dummyjson.com/
  * https://www.mockaroo.com/
  * https://www.generatedata.com/
+ * https://gist.github.com/keeguon/2310008
+ * https://jsonplaceholder.typicode.com/guide/
  *
  */
 
@@ -22,4 +24,18 @@ export class SampleData {
   static JsonData = JSONData;
   static KeyValueLists = KeyValueLists;
   static Objects = Objects;
+  static from = async (uri, apiKey) => {
+    try {
+      const response = await fetch(uri, {
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
