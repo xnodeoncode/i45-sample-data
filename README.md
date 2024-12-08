@@ -104,11 +104,11 @@ export default App;
 
 ## Simple REST API Call
 
-The from method makes a get request using the browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns the results in JSON format.
+The **from** method makes a get request using the browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns the results in JSON format.
 
 An optional API_KEY can be passed as a second parameter.
 
-NOTE: This method only makes a get request and only passes the x-api-key in the request. To make a post request, or to include other headers such as custom content types, see the section [REST API Call with Custom Headers](#rest-api-call-with-custom-headers).
+NOTE: This method makes a HTTP Get request and, if present, passes the x-api-key in the request header. To make an HTTP Post request, or to include other headers such as custom content types, see the section [REST API Call with Custom Headers](#rest-api-call-with-custom-headers).
 
 ```javascript
 import { SampleData } from "i45-sample-data";
@@ -126,17 +126,17 @@ var data = await SampleData.from(
 
 ## REST API Call with Custom Headers
 
-The fetch method is a wrapper for the browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) that accepts a url and a [headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object, and returns a response object.
+The **fetch** method is a wrapper for the browser's [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) that accepts a URL and a [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object, and returns a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object.
 
-The [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object may contain results in other formats, not only JSON.
+The [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object may contain results in other formats, including HTML.
 
-See the [FETCH API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+See the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response objects.
 
 ```javascript
 import { SampleData } from "i45-sample-data";
 
 // The optional headers object contains an x-api-key that in passed as YOUR_API_KEY.
-data = await SampleData.from("https://jsonplaceholder.typicode.com/posts", {
+data = await SampleData.fetch("https://jsonplaceholder.typicode.com/posts", {
   headers: { "Content-Type": "application/json", "x-api-key": "YOUR_API_KEY" },
 });
 
