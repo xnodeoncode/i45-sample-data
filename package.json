@@ -4,7 +4,10 @@
   "main": "./dist/main.js",
   "description": "A collection of sample datasets to be used for testing and development.",
   "scripts": {
-    "patch": "npm version prerelease --preid=alpha",
+    "alpha-patch": "npm version prerelease --preid=alpha",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major",
     "build": "cp -a src/. dist/",
     "checkin": "git add . && git commit -a -m \"See CHANGES.md for a list of Revisions.\" "
   },
