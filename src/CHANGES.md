@@ -20,3 +20,8 @@
 
 - Added samples for Students and Countries.
 - Implemented REST API call.
+
+### v0.0.0-alpha.5
+
+- Added Fetch REST API method wrapper. The method accepts the same parameters as the native fetch api and returns the response object.
+- This allows more flexibility in making API calls.

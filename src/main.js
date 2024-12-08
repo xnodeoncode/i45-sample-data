@@ -24,16 +24,23 @@ export class SampleData {
   static JsonData = JSONData;
   static KeyValueLists = KeyValueLists;
   static Objects = Objects;
+
   static from = async (uri, apiKey) => {
     try {
       const response = await fetch(uri, {
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey,
-        },
+        headers: { "Content-Type": "application/json", "x-api-key": apiKey },
       });
       const data = await response.json();
       return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  static fetch = async (uri, options) => {
+    try {
+      const response = await fetch(uri, { ...options });
+      return response;
     } catch (error) {
       console.error(error);
     }

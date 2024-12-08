@@ -15,16 +15,16 @@ npm i i45-sample-data
 ```javascript
 import { SampleData } from "i45-sample-data";
 
-console.log("SampleData", SampleData.JsonData.States); // outputs a list of states information to the console.
-console.log("SampleData", SampleData.KeyValueLists.States); // outputs a list of states and abbreviations to the console.
-console.log("SampleData", SampleData.Lists.Astronomy); // outputs a list of astronomical terms to the console.
-console.log("SampleData", SampleData.Objects.KeyCodes); // outputs a complex object with keyboard codes grouped by function.
-console.log("Key Codes", SampleData.Objects.KeyCodes);
-console.log("Students", SampleData.JsonData.Students);
-console.log("Countries", SampleData.JsonData.Countries);
+console.log("Astronomy", SampleData.Lists.Astronomy); // outputs a list of astronomical terms.
+console.log("States", SampleData.KeyValueLists.States); // outputs a list of states and abbreviations.
+console.log("States", SampleData.JsonData.States); // outputs an array of states with other information.
+console.log("Students", SampleData.JsonData.Students); // outputs an array of students and grades.
+console.log("Countries", SampleData.JsonData.Countries); // outputs an array of countries with other information
+console.log("Key Codes", SampleData.Objects.KeyCodes); // outputs a KeyCodes object with keyboard codes grouped by function.
+
 console.log(
   "Rest API call",
-  await SampleData.from("https://jsonplaceholder.typicode.com/posts", "")
+  await SampleData.from("https://jsonplaceholder.typicode.com/posts")
 );
 ```
 
@@ -80,7 +80,7 @@ import "./App.css";
 import { SampleData } from "i45-sample-data";
 
 function App() {
-  // iterate over a list of trivia questions and create divs with the information.
+  // iterate over a list of trivia questions.
   return (
     <>
       <div>
@@ -102,15 +102,44 @@ function App() {
 export default App;
 ```
 
-## REST API Call
+## Simple REST API Call
+
+The from method makes a get request using the browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns the results in JSON format.
+
+An optional API_KEY can be passed as a second parameter.
+
+NOTE: This method only makes a get request and only passes the x-api-key in the request. To make a post request, or to include other headers such as custom content types, see the section [REST API Call with Custom Headers](#rest-api-call-with-custom-headers).
 
 ```javascript
 import { SampleData } from "i45-sample-data";
 
+// Make an async REST API call to the provided endpoint.
+var data = await SampleData.from("https://jsonplaceholder.typicode.com/posts");
+
+//or
+
 var data = await SampleData.from(
   "https://jsonplaceholder.typicode.com/posts",
-  ""
+  "YOUR_API_KEY"
 );
+```
+
+## REST API Call with Custom Headers
+
+The fetch method is a wrapper for the browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) that accepts a url and a [headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object, and returns a response object.
+
+The [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object may contain results in other formats, not only JSON.
+
+See the [FETCH API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+
+```javascript
+import { SampleData } from "i45-sample-data";
+
+// The optional headers object contains an x-api-key that in passed as YOUR_API_KEY.
+data = await SampleData.from("https://jsonplaceholder.typicode.com/posts", {
+  headers: { "Content-Type": "application/json", "x-api-key": "YOUR_API_KEY" },
+});
+
 console.log("Data from API", data);
 ```
 
@@ -124,4 +153,4 @@ The sample data in this package is pulled from various sources:
 - [Michael Shafrir](https://gist.github.com/mshafrir/2646763)
 - [Felix Bellanger](https://gist.github.com/keeguon)
 - [Open Trivia Database](https://opentdb.com/)
-- [JSON Placeholder](https://jsonplaceholder.typicode.com);
+- [JSON Placeholder](https://jsonplaceholder.typicode.com)
