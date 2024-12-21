@@ -30,8 +30,7 @@ export class SampleData {
       const response = await fetch(uri, {
         headers: { "Content-Type": "application/json", "x-api-key": apiKey },
       });
-      const data = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
       console.error(error);
     }
@@ -39,8 +38,7 @@ export class SampleData {
 
   static fetch = async (uri, options) => {
     try {
-      const response = await fetch(uri, { ...options });
-      return response;
+      return await fetch(uri, options);
     } catch (error) {
       console.error(error);
     }

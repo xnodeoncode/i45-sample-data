@@ -108,7 +108,7 @@ The **from** method makes a get request using the browser's [fetch api](https://
 
 An optional API_KEY can be passed as a second parameter.
 
-NOTE: This method makes a HTTP Get request and, if present, passes the x-api-key in the request header. To make an HTTP Post request, or to include other headers such as custom content types, see the section [REST API Call with Custom Headers](#rest-api-call-with-custom-headers).
+NOTE: This method makes an HTTP Get request and, if present, passes the x-api-key in the request header. To make an HTTP Post request, or to include other headers such as custom content types, see the section [REST API Call with Custom Headers](#rest-api-call-with-custom-headers).
 
 ```javascript
 import { SampleData } from "i45-sample-data";
@@ -116,12 +116,15 @@ import { SampleData } from "i45-sample-data";
 // Make an async REST API call to the provided endpoint.
 var data = await SampleData.from("https://jsonplaceholder.typicode.com/posts");
 
-//or
+//or with an API_KEY
 
 var data = await SampleData.from(
   "https://jsonplaceholder.typicode.com/posts",
   "YOUR_API_KEY"
 );
+
+// The data is output in json format.
+console.log(data);
 ```
 
 ## REST API Call with Custom Headers
@@ -130,7 +133,7 @@ The **fetch** method is a wrapper for the browser's [Fetch API](https://develope
 
 The [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object may contain results in other formats, including HTML.
 
-See the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response objects.
+See the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) objects.
 
 ```javascript
 import { SampleData } from "i45-sample-data";
@@ -140,7 +143,9 @@ data = await SampleData.fetch("https://jsonplaceholder.typicode.com/posts", {
   headers: { "Content-Type": "application/json", "x-api-key": "YOUR_API_KEY" },
 });
 
-console.log("Data from API", data);
+// The fetch method returns the Response object so the results have to be parsed.
+// In this example, the json() method is called to return the json result found.
+console.log("Data from API", data.json());
 ```
 
 ## Sources
