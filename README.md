@@ -122,6 +122,9 @@ var data = await SampleData.from(
   "https://jsonplaceholder.typicode.com/posts",
   "YOUR_API_KEY"
 );
+
+// the data is returned in json format.
+console.log(data);
 ```
 
 ## REST API Call with Custom Headers
@@ -130,7 +133,7 @@ The **fetch** method is a wrapper for the browser's [Fetch API](https://develope
 
 The [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object may contain results in other formats, including HTML.
 
-See the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response objects.
+See the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) objects.
 
 ```javascript
 import { SampleData } from "i45-sample-data";
@@ -140,7 +143,8 @@ data = await SampleData.fetch("https://jsonplaceholder.typicode.com/posts", {
   headers: { "Content-Type": "application/json", "x-api-key": "YOUR_API_KEY" },
 });
 
-console.log("Data from API", data);
+// The fetch method returns a Response object, which allows the results to be converted into the required format when consumed.
+console.log("Data from API", data.json());
 ```
 
 ## Sources
