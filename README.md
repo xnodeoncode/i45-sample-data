@@ -123,7 +123,7 @@ var data = await SampleData.from(
   "YOUR_API_KEY"
 );
 
-// The data is output in json format.
+// the data is returned in json format.
 console.log(data);
 ```
 
@@ -143,8 +143,7 @@ data = await SampleData.fetch("https://jsonplaceholder.typicode.com/posts", {
   headers: { "Content-Type": "application/json", "x-api-key": "YOUR_API_KEY" },
 });
 
-// The fetch method returns the Response object so the results have to be parsed.
-// In this example, the json() method is called to return the json result found.
+// The fetch method returns a Response object, which allows the results to be converted into the required format when consumed.
 console.log("Data from API", data.json());
 ```
 

@@ -28,6 +28,6 @@
 
 ## December 21, 2024
 
-### v.1.0.1
+### v1.0.1
 
 - Minor bug fixes.
