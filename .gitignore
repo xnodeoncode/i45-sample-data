@@ -1,3 +1,5 @@
+*.code-workspace
+
 .git/
 .git/*
 .git/**/*

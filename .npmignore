@@ -1,9 +1,12 @@
-src/
-src/*
-src/**/*
+
+.gitignore
+/node_modules
+/src
+/src/
+/src/**/*
+/src/*
+
 
 .git
 .git/*
 .git/**/*
-
-.gitignore
