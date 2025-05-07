@@ -146,15 +146,3 @@ data = await SampleData.fetch("https://jsonplaceholder.typicode.com/posts", {
 // The fetch method returns a Response object, which allows the results to be converted into the required format when consumed.
 console.log("Data from API", data.json());
 ```
-
-## Sources
-
-The sample data in this package is pulled from various sources:
-
-- [Nano Taboada](https://gist.github.com/nanotaboada)
-- [Dummy APIs](https://dummyjson.com/docs/recipes)
-- [Jason Priebe](https://gist.github.com/jpriebe)
-- [Michael Shafrir](https://gist.github.com/mshafrir/2646763)
-- [Felix Bellanger](https://gist.github.com/keeguon)
-- [Open Trivia Database](https://opentdb.com/)
-- [JSON Placeholder](https://jsonplaceholder.typicode.com)
