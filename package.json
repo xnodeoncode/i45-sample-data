@@ -8,7 +8,9 @@
     "patch": "npm version patch",
     "minor": "npm version minor",
     "major": "npm version major",
-    "build": "xcopy src\\* dist\\ /s /e",
+    "build-windows": "xcopy src\\* dist\\ /s /e",
+    "build-linux": "cp -r src/* dist/",
+    "build": "npm run build-windows || npm run build-linux",
     "checkin": "git add . && git commit -a -m \"See CHANGES.md for a list of Revisions.\" "
   },
   "keywords": [
