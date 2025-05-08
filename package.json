@@ -1,6 +1,6 @@
 {
   "name": "i45-sample-data",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./dist/main.js",
   "description": "A collection of sample datasets to be used for testing and development.",
   "scripts": {
