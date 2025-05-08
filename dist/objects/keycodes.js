@@ -1,5 +1,4 @@
 export const KeyCodes = {
-  KeyCodes: {
     ArrowKeys: {
       Up: 38,
       Down: 40,
@@ -81,5 +80,4 @@ export const KeyCodes = {
       Delete: 46,
       Insert: 45,
     },
-  },
 };

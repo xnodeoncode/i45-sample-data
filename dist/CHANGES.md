@@ -31,3 +31,21 @@
 ### v1.0.1
 
 - Minor bug fixes.
+
+## May 07, 2025
+
+### v1.0.2
+
+- Minor bug fixes.
+
+### v1.0.3
+
+- Minor bug fixes.
+
+## May 08, 2025
+
+- Refactored **KeyCodes** object to reduce the depth.
+    - After import use **KeyCodes.ArrowKeys.Up** instead of *KeyCodes.KeyCodes.ArrowKeys.Up*.
+    - There is no backward compatibility.
+- Added **States** to object collection.
+    - State information can be accessed using **SampleData.Objects.States.Michigan** syntax.
