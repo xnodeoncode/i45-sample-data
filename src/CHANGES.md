@@ -56,6 +56,6 @@
 
 - Minor bug fix.
 
-### v2.2.0
+### v2.1.0
 
 - Added album collection to objects.
