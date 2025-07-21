@@ -47,11 +47,15 @@
 ### v2.0.0
 
 - Refactored **KeyCodes** object to reduce the depth.
-    - After import use **KeyCodes.ArrowKeys.Up** instead of *KeyCodes.KeyCodes.ArrowKeys.Up*.
-    - There is no backward compatibility.
+  - After import use **KeyCodes.ArrowKeys.Up** instead of _KeyCodes.KeyCodes.ArrowKeys.Up_.
+  - There is no backward compatibility.
 - Added **States** to object collection.
-    - State information can be accessed using **SampleData.Objects.States.Michigan** syntax.
+  - State information can be accessed using **SampleData.Objects.States.Michigan** syntax.
 
 ### v2.0.1
 
 - Minor bug fix.
+
+### v2.2.0
+
+- Added album collection to objects.
