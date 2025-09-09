@@ -7,6 +7,7 @@ import { Players } from "./players.js";
 import { Recipes } from "./recipes.js";
 import { Students } from "./student-scores.js";
 import { Countries } from "./countries.js";
+import { DailyWeather } from "./daily-weather.js";
 
 export class JSONData {
   constructor() {}
@@ -19,4 +20,5 @@ export class JSONData {
   static Recipes = Recipes ? Recipes : [];
   static Students = Students ? Students : [];
   static Countries = Countries ? Countries : [];
+  static DailyWeather = DailyWeather ? DailyWeather : [];
 }

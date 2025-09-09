@@ -54,8 +54,16 @@
 
 ### v2.0.1
 
-- Minor bug fix.
+- Minor bug fixes.
 
 ### v2.1.0
 
 - Added album collection to objects.
+
+### v2.1.1
+
+- Minor bug fixes.
+
+### v2.1.2
+
+- Added daily weather sample.
