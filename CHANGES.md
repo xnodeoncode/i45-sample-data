@@ -67,3 +67,7 @@
 ### v2.1.2
 
 - Added daily weather sample.
+
+### v2.1.3
+
+- Added movie list.

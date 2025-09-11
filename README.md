@@ -7,7 +7,8 @@ A library of sample datasets that can be used during testing and development.
 ## Installation
 
 ```javascript
-npm i i45-sample-data
+// use the --save-dev parameter to save as a development dependency only.
+npm i i45-sample-data --save-dev
 ```
 
 ## Usage
@@ -15,15 +16,27 @@ npm i i45-sample-data
 ```javascript
 import { SampleData } from "i45-sample-data";
 
-console.log("Astronomy", SampleData.Lists.Astronomy); // outputs a list of astronomical terms.
-console.log("States", SampleData.KeyValueLists.States); // outputs a list of states and abbreviations.
-console.log("States", SampleData.JsonData.States); // outputs an array of states with other information.
-console.log("Students", SampleData.JsonData.Students); // outputs an array of students and grades.
-console.log("Countries", SampleData.JsonData.Countries); // outputs an array of countries with other information
-console.log("Key Codes", SampleData.Objects.KeyCodes); // outputs a KeyCodes object with keyboard codes grouped by function.
+// outputs a list of astronomical terms.
+console.log("Astronomy", SampleData.Lists.Astronomy);
 
+// outputs a list of states and abbreviations.
+console.log("States", SampleData.KeyValueLists.States);
+
+// outputs an array of states with other information.
+console.log("States", SampleData.JsonData.States);
+
+// outputs an array of students and grades.
+console.log("Students", SampleData.JsonData.Students);
+
+// outputs an array of countries with other information
+console.log("Countries", SampleData.JsonData.Countries);
+
+// outputs a KeyCodes object with keyboard codes grouped by function.
+console.log("Key Codes", SampleData.Objects.KeyCodes);
+
+// sample api call.
 console.log(
-  "Rest API call",
+  "JSON placeholder text",
   await SampleData.from("https://jsonplaceholder.typicode.com/posts")
 );
 ```
@@ -84,7 +97,7 @@ function App() {
   return (
     <>
       <div>
-        {SampleData.JsonData.TriviaQuestions.map((question, index) => (
+        {SampleData.JsonData.TriviaQuestions.map((index, question) => (
           <div id={index} key={index} className="question-div">
             <h3>{question.question}</h3>
             <p>Category: {question.category}</p>
@@ -102,18 +115,18 @@ function App() {
 export default App;
 ```
 
-## Simple REST API Call
+## Simple API Call
 
 The **from** method makes a get request using the browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns the results in JSON format.
 
 An optional API_KEY can be passed as a second parameter.
 
-NOTE: This method makes an HTTP Get request and, if present, passes the x-api-key in the request header. To make an HTTP Post request, or to include other headers such as custom content types, see the section [REST API Call with Custom Headers](#rest-api-call-with-custom-headers).
+NOTE: This method makes an HTTP Get request and, if present, passes the x-api-key in the request header. To make an HTTP Post request, or to include other headers such as custom content types, see the section [API Call with Custom Headers](#api-call-with-custom-headers).
 
 ```javascript
 import { SampleData } from "i45-sample-data";
 
-// Make an async REST API call to the provided endpoint.
+// Make an async API call to the provided endpoint.
 var data = await SampleData.from("https://jsonplaceholder.typicode.com/posts");
 
 //or with an API_KEY
@@ -127,7 +140,7 @@ var data = await SampleData.from(
 console.log(data);
 ```
 
-## REST API Call with Custom Headers
+## API Call with Custom Headers
 
 The **fetch** method is a wrapper for the browser's [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) that accepts a URL and a [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object, and returns a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object.
 
