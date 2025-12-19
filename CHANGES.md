@@ -85,3 +85,14 @@
   - Generic type support for `SampleData.fetch<T>()` method.
 - **100% backward compatible** - No breaking changes for existing JavaScript or TypeScript consumers.
 - All type declarations automatically included in package distribution.
+
+### v2.2.1
+
+- **Updated README.md** with comprehensive TypeScript usage examples.
+  - Added TypeScript import examples with type annotations.
+  - Documented all available type interfaces.
+  - Updated React component example with proper TypeScript syntax.
+  - Replaced deprecated property references with current recommended APIs (Collections/Dictionaries).
+  - Added backward compatibility section for deprecated properties.
+  - Included feature highlights (TypeScript support, ESM, tree-shakeable).
+  - Fixed fetch API example to show generic type parameter usage.

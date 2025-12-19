@@ -2,49 +2,107 @@
 
 [Node JS Package](https://www.npmjs.com/package/i45-sample-data)
 
-A library of sample datasets that can be used during testing and development.
+A library of sample datasets that can be used during testing and development. Fully typed with TypeScript definitions included.
 
 ## Installation
 
-```javascript
-// use the --save-dev parameter to save as a development dependency only.
+```bash
 npm i i45-sample-data --save-dev
 ```
 
+## Features
+
+- ✅ **Fully TypeScript supported** with comprehensive type definitions
+- ✅ **ES Modules** (ESM) support
+- ✅ **Tree-shakeable** exports
+- ✅ **Zero dependencies** for production
+- ✅ **18+ dataset types** with proper interfaces
+
 ## Usage
+
+### JavaScript
 
 ```javascript
 import { SampleData } from "i45-sample-data";
 
-// outputs a list of astronomical terms.
+// Lists - Simple string arrays
 console.log("Astronomy", SampleData.Lists.Astronomy);
+console.log("States", SampleData.Lists.States);
 
-// outputs a list of states and abbreviations.
-console.log("States", SampleData.KeyValueLists.States);
+// Dictionaries - Key-value pairs
+console.log("States", SampleData.Dictionaries.States);
+console.log("Countries", SampleData.Dictionaries.Countries);
 
-// outputs an array of states with other information.
-console.log("States", SampleData.JsonData.States);
+// Collections - Arrays of objects
+console.log("Books", SampleData.Collections.Books);
+console.log("Students", SampleData.Collections.Students);
+console.log("Countries", SampleData.Collections.Countries);
+console.log("TriviaQuestions", SampleData.Collections.TriviaQuestions);
+console.log("Albums", SampleData.Collections.Albums);
+console.log("Songs", SampleData.Collections.Songs);
+console.log("Players", SampleData.Collections.Players);
+console.log("Recipes", SampleData.Collections.Recipes);
+console.log("States", SampleData.Collections.States);
+console.log("DailyWeather", SampleData.Collections.DailyWeather);
 
-// outputs an array of students and grades.
-console.log("Students", SampleData.JsonData.Students);
+// Objects - Structured data
+console.log("KeyCodes", SampleData.Objects.KeyCodes);
+console.log("States", SampleData.Objects.States);
+console.log("Movies", SampleData.Objects.Movies);
+```
 
-// outputs an array of countries with other information
-console.log("Countries", SampleData.JsonData.Countries);
+### TypeScript
 
-// outputs a KeyCodes object with keyboard codes grouped by function.
-console.log("Key Codes", SampleData.Objects.KeyCodes);
+```typescript
+import {
+  SampleData,
+  type Book,
+  type TriviaQuestion,
+  type Student,
+} from "i45-sample-data";
 
-// sample api call.
-console.log(
-  "JSON placeholder text",
-  await SampleData.from("https://jsonplaceholder.typicode.com/posts")
+// Type-safe access to data
+const books: Book[] = SampleData.Collections.Books;
+const firstBook: Book = books[0];
+
+// Intellisense works perfectly
+console.log(firstBook.title, firstBook.author, firstBook.isbn);
+
+// Type-safe function parameters
+function displayQuestion(question: TriviaQuestion): void {
+  console.log(`${question.category}: ${question.question}`);
+  console.log(`Difficulty: ${question.difficulty}`);
+}
+
+// Generic fetch with type parameter
+type ApiResponse = { data: Student[] };
+const result = await SampleData.fetch<ApiResponse>(
+  "https://api.example.com/students"
 );
 ```
+
+## Available Types
+
+All TypeScript interfaces are exported for use in your projects:
+
+- `Book` - ISBN, title, author, publisher details
+- `TriviaQuestion` - Trivia questions with difficulty and category
+- `Album` - Music album information
+- `Song` - Song metadata with audio features
+- `Player` - Soccer player data
+- `Recipe` - Cooking recipes with ingredients and instructions
+- `Student` - Student records with grades
+- `State` - US state information
+- `Country` - Country data with currency and language
+- `DailyWeather` - Weather forecast data
+- `KeyCodes` - Keyboard key code mappings
+- `Movie` - Movie metadata
+- And more...
 
 ## Sample Output
 
 ```javascript
-console.log(SampleData.JsonData.TriviaQuestions);
+console.log(SampleData.Collections.TriviaQuestions);
 
 // output
 [
@@ -86,19 +144,20 @@ console.log(SampleData.JsonData.TriviaQuestions);
 ];
 ```
 
-## Using a React Component (App.jsx)
+## Using in React Component (App.tsx)
 
-```javascript
+```typescript
 import "./App.css";
-import { SampleData } from "i45-sample-data";
+import { SampleData, type TriviaQuestion } from "i45-sample-data";
 
 function App() {
-  // iterate over a list of trivia questions.
+  const questions: TriviaQuestion[] = SampleData.Collections.TriviaQuestions;
+
   return (
     <>
       <div>
-        {SampleData.JsonData.TriviaQuestions.map((index, question) => (
-          <div id={index} key={index} className="question-div">
+        {questions.map((question, index) => (
+          <div id={`q-${index}`} key={index} className="question-div">
             <h3>{question.question}</h3>
             <p>Category: {question.category}</p>
             <p>Difficulty: {question.difficulty}</p>
@@ -142,20 +201,50 @@ console.log(data);
 
 ## API Call with Custom Headers
 
-The **fetch** method is a wrapper for the browser's [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) that accepts a URL and a [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object, and returns a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object.
+options object, and returns a typed [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response).
 
-The [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object may contain results in other formats, including HTML.
+See the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information.
 
-See the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) MDN Web Docs for more information on using [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) objects.
-
-```javascript
+```typescript
 import { SampleData } from "i45-sample-data";
 
-// The optional headers object contains an x-api-key that in passed as YOUR_API_KEY.
-data = await SampleData.fetch("https://jsonplaceholder.typicode.com/posts", {
-  headers: { "Content-Type": "application/json", "x-api-key": "YOUR_API_KEY" },
-});
+// With TypeScript, you can specify the response type
+type Post = { id: number; title: string; body: string; userId: number };
 
-// The fetch method returns a Response object, which allows the results to be converted into the required format when consumed.
-console.log("Data from API", data.json());
+const data = await SampleData.fetch<Post[]>(
+  "https://jsonplaceholder.typicode.com/posts",
+  {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "YOUR_API_KEY",
+    },
+  }
+);
+
+// data is now typed as Post[]
+console.log("Data from API", data);
+```
+
+## Backward Compatibility
+
+The following deprecated properties are still available but not recommended:
+
+```javascript
+// ⚠️ Deprecated - Use Collections instead
+SampleData.JsonData.Books;
+
+// ⚠️ Deprecated - Use Dictionaries instead
+SampleData.KeyValueLists.States;
+
+// ✅ Recommended
+SampleData.Collections.Books;
+SampleData.Dictionaries.States;
+```
+
+## License
+
+ISCsole.log("Data from API", data.json());
+
+```
+
 ```
