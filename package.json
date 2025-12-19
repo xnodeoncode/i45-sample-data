@@ -15,10 +15,6 @@
     "CHANGES.md"
   ],
   "scripts": {
-    "alpha-patch": "npm version prerelease --preid=alpha",
-    "patch": "npm version patch",
-    "minor": "npm version minor",
-    "major": "npm version major",
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc -p ./tsconfig.production.json && tsc-alias -p ./tsconfig.production.json",
     "prepublishOnly": "npm run build && npm test",
