@@ -47,7 +47,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc -p ./tsconfig.production.json && tsc-alias -p ./tsconfig.production.json",
-    "prepublishOnly": "npm run build && npm test",
+    "prepublishOnly": "npm run build && npm test:all",
     "test": "node tests/test-package.js",
     "test:ts": "tsx tests/test-package.ts",
     "test:tree-shaking": "node tests/test-tree-shaking.js",
