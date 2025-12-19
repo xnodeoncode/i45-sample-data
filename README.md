@@ -245,7 +245,7 @@ SampleData.Dictionaries.States;
 
 ## License
 
-ISCsole.log("Data from API", data.json());
+ISC
 
 ```
 
