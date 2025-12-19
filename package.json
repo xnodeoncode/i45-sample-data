@@ -1,7 +1,8 @@
 {
   "name": "i45-sample-data",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "type": "module",
+  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,6 +11,31 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./collections": {
+      "types": "./dist/collections.d.ts",
+      "import": "./dist/collections.js",
+      "default": "./dist/collections.js"
+    },
+    "./lists": {
+      "types": "./dist/lists.d.ts",
+      "import": "./dist/lists.js",
+      "default": "./dist/lists.js"
+    },
+    "./dictionaries": {
+      "types": "./dist/dictionaries.d.ts",
+      "import": "./dist/dictionaries.js",
+      "default": "./dist/dictionaries.js"
+    },
+    "./objects": {
+      "types": "./dist/objects.d.ts",
+      "import": "./dist/objects.js",
+      "default": "./dist/objects.js"
+    },
+    "./helpers": {
+      "types": "./dist/helpers.d.ts",
+      "import": "./dist/helpers.js",
+      "default": "./dist/helpers.js"
     }
   },
   "description": "A collection of sample datasets to be used for testing and development.",
@@ -22,8 +48,11 @@
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc -p ./tsconfig.production.json && tsc-alias -p ./tsconfig.production.json",
     "prepublishOnly": "npm run build && npm test",
-    "test": "node test-package.js",
-    "test:ts": "tsx test-package.ts",
+    "test": "node tests/test-package.js",
+    "test:ts": "tsx tests/test-package.ts",
+    "test:tree-shaking": "node tests/test-tree-shaking.js",
+    "test:helpers": "node tests/test-helpers.js",
+    "test:all": "npm run test && npm run test:ts && npm run test:tree-shaking && npm run test:helpers",
     "checkin": "git add . && git commit -a -m \"See CHANGES.md for a list of Revisions.\" ",
     "lint": "eslint ."
   },
@@ -33,7 +62,9 @@
     "sample data",
     "test data",
     "development data",
-    "datasets"
+    "datasets",
+    "data helpers",
+    "typescript"
   ],
   "author": "CIS Guru <cisguru@outlook.com>",
   "license": "ISC",
@@ -46,19 +77,11 @@
     "rimraf": "^6.0.1",
     "tsc-alias": "^1.8.16",
     "tsx": "^4.19.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
     "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "typescript-eslint": "^8.39.1"
   },
   "bugs": {
     "url": "https://github.com/xnodeoncode/i45-sample-data/issues"

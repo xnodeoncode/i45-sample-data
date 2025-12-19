@@ -17,9 +17,9 @@
     "esModuleInterop": true,
 
     // Other Outputs
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
@@ -41,6 +41,7 @@
     "node_modules",
     "dist",
     "backup",
+    "tests",
     "test-package.ts",
     "test-package.js",
     "test-types.ts"

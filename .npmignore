@@ -3,7 +3,8 @@ README.ts.md
 TYPESCRIPT-INTERFACES.md
 Project-Analysis.md
 
-# Test files
+# Test files and directory
+tests/
 test-package.js
 test-package.ts
 test-package.d.ts

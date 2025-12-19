@@ -129,3 +129,36 @@
   - API key is no longer required - only provide it when calling authenticated endpoints.
   - The `x-api-key` header is only included when an API key is provided.
   - Supports both public and authenticated API calls.
+
+### v3.1.0
+
+- **Added tree-shakeable individual imports** for optimized bundle sizes.
+  - New subpath exports: `i45-sample-data/collections`, `i45-sample-data/lists`, `i45-sample-data/dictionaries`, `i45-sample-data/objects`, `i45-sample-data/helpers`.
+  - Import only the specific datasets you need instead of the entire library.
+  - Example: `import { Books, TriviaQuestions } from 'i45-sample-data/collections'`
+  - Reduces bundle size significantly when using modern bundlers (webpack, Vite, Rollup).
+  - All types are re-exported from subpath imports for full TypeScript support.
+- **Added helper methods to SampleData class** for working with sample data.
+  - `SampleData.random<T>(dataset)` - Get a random item from any array dataset.
+  - `SampleData.randomMultiple<T>(dataset, count)` - Get multiple random items.
+  - `SampleData.shuffle<T>(dataset)` - Randomly shuffle an array (returns new array).
+  - Methods include input validation with clear error messages.
+  - All methods are fully typed with TypeScript generics.
+- **Added DataHelpers class** for generic data manipulation (`i45-sample-data/helpers`).
+  - `filterBy()` - Filter items by property value.
+  - `search()` - Search across multiple string properties.
+  - `filterWhere()` - Filter by custom predicate function.
+  - `groupBy()` - Group items by property value.
+  - `countBy()` - Count items by property value.
+  - `sortBy()` - Sort array by property (asc/desc).
+  - `paginate()` - Paginate array data with metadata.
+  - `unique()` - Get unique values for a property.
+  - `pluck()` - Extract specific properties from objects.
+  - All methods work with any array data, not just sample data.
+  - Tree-shakeable - only imported when explicitly needed.
+- **Updated README.md** with comprehensive usage examples.
+  - Added examples showing both standard and tree-shakeable import patterns.
+  - Documented helper methods with practical examples.
+  - Included TypeScript examples with tree-shakeable imports.
+  - Documented bundle size optimization benefits.
+- **100% backward compatible** - No breaking changes, pure feature additions.

@@ -14,13 +14,101 @@ npm i i45-sample-data --save-dev
 
 - ✅ **Fully TypeScript supported** with comprehensive type definitions
 - ✅ **ES Modules** (ESM) support
-- ✅ **Tree-shakeable** exports
+- ✅ **Tree-shakeable** exports with individual imports
 - ✅ **Zero dependencies** for production
 - ✅ **18+ dataset types** with proper interfaces
+- ✅ **Optimized bundle size** - import only what you need
+
+## Bundle Size
+
+The package is optimized for tree-shaking to minimize your production bundle:
+
+```javascript
+// ⚠️ Full import - bundles all datasets (~40-50KB minified)
+import { SampleData } from "i45-sample-data";
+
+// ✅ Tree-shakeable - only bundles what you use (~2-10KB each)
+import { Books } from "i45-sample-data/collections";
+import { Astronomy } from "i45-sample-data/lists";
+import { DataHelpers } from "i45-sample-data/helpers";
+```
+
+**Tips for minimal bundle size:**
+
+- Use individual imports (`/collections`, `/lists`, etc.) instead of the main entry point
+- Only import the datasets you actually use
+- Helper methods add ~2KB when imported
+
+**Package marked with `sideEffects: false`** for optimal tree-shaking with modern bundlers (webpack, Rollup, Vite, esbuild).
 
 ## Usage
 
-### JavaScript
+### Standard Import (Full Library)
+
+```javascript
+import { SampleData } from "i45-sample-data";
+
+// Lists - Simple string arrays
+console.log("Astronomy", SampleData.Lists.Astronomy);
+console.log("States", SampleData.Lists.States);
+
+// Dictionaries - Key-value pairs
+console.log("States", SampleData.Dictionaries.States);
+console.log("Countries", SampleData.Dictionaries.Countries);
+
+// Collections - Arrays of objects
+console.log("Books", SampleData.Collections.Books);
+console.log("Students", SampleData.Collections.Students);
+console.log("Countries", SampleData.Collections.Countries);
+console.log("TriviaQuestions", SampleData.Collections.TriviaQuestions);
+console.log("Albums", SampleData.Collections.Albums);
+console.log("Songs", SampleData.Collections.Songs);
+console.log("Players", SampleData.Collections.Players);
+console.log("Recipes", SampleData.Collections.Recipes);
+console.log("States", SampleData.Collections.States);
+console.log("DailyWeather", SampleData.Collections.DailyWeather);
+
+// Objects - Structured data
+console.log("KeyCodes", SampleData.Objects.KeyCodes);
+console.log("States", SampleData.Objects.States);
+console.log("Movies", SampleData.Objects.Movies);
+```
+
+### Tree-Shakeable Imports (Optimized Bundle Size)
+
+Import only the datasets you need to minimize your bundle size:
+
+```javascript
+// Import specific collections
+import { Books, TriviaQuestions, Students } from "i45-sample-data/collections";
+
+// Import specific lists
+import { Astronomy, States } from "i45-sample-data/lists";
+
+// Import specific dictionaries
+import { Countries } from "i45-sample-data/dictionaries";
+
+// Import specific objects
+import { KeyCodes, Movies } from "i45-sample-data/objects";
+
+console.log("Books:", Books);
+console.log("Astronomy:", Astronomy);
+```
+
+### TypeScript with Tree-Shaking
+
+```typescript
+import { Books, type Book } from "i45-sample-data/collections";
+import { Astronomy } from "i45-sample-data/lists";
+
+// Type-safe access with minimal bundle size
+const books: Book[] = Books;
+const astronomyTerms: string[] = Astronomy;
+
+console.log(books[0].title);
+```
+
+### TypeScript (Standard Import)
 
 ```javascript
 import { SampleData } from "i45-sample-data";
@@ -80,6 +168,79 @@ const result = await SampleData.fetch<ApiResponse>(
   "https://api.example.com/students"
 );
 ```
+
+## Helper Methods
+
+### SampleData Helper Methods
+
+Convenience methods for working with sample data:
+
+```typescript
+import { SampleData } from "i45-sample-data";
+
+// Get a random book
+const randomBook = SampleData.random(SampleData.Collections.Books);
+
+// Get 3 random trivia questions
+const questions = SampleData.randomMultiple(
+  SampleData.Collections.TriviaQuestions,
+  3
+);
+
+// Shuffle the states list
+const shuffledStates = SampleData.shuffle(SampleData.Lists.States);
+```
+
+### DataHelpers for Advanced Manipulation
+
+Import `DataHelpers` for advanced data manipulation utilities:
+
+```typescript
+import { TriviaQuestions } from "i45-sample-data/collections";
+import { DataHelpers } from "i45-sample-data/helpers";
+
+// Filter by difficulty
+const easyQuestions = DataHelpers.filterBy(
+  TriviaQuestions,
+  "difficulty",
+  "easy"
+);
+
+// Search across multiple fields
+const science = DataHelpers.search(TriviaQuestions, "science", [
+  "category",
+  "question",
+]);
+
+// Group by difficulty
+const grouped = DataHelpers.groupBy(TriviaQuestions, "difficulty");
+// { easy: [...], medium: [...], hard: [...] }
+
+// Paginate results
+const page1 = DataHelpers.paginate(TriviaQuestions, 1, 5);
+// { data: [...5 items], page: 1, total: 10, hasNext: true, ... }
+
+// Sort by property
+const sorted = DataHelpers.sortBy(TriviaQuestions, "difficulty", "asc");
+
+// Get unique values
+const difficulties = DataHelpers.unique(TriviaQuestions, "difficulty");
+
+// Extract specific fields
+const simplified = DataHelpers.pluck(TriviaQuestions, "question", "difficulty");
+```
+
+**Available DataHelper methods:**
+
+- `filterBy()` - Filter by property value
+- `search()` - Search across string fields
+- `filterWhere()` - Filter with custom function
+- `groupBy()` - Group by property
+- `countBy()` - Count occurrences
+- `sortBy()` - Sort by property
+- `paginate()` - Paginate with metadata
+- `unique()` - Get unique values
+- `pluck()` - Extract properties
 
 ## Available Types
 
@@ -246,7 +407,3 @@ SampleData.Dictionaries.States;
 ## License
 
 ISC
-
-```
-
-```
