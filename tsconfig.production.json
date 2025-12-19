@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "**/__tests__/*",
+    "node_modules",
+    "dist",
+    "backup",
+    "test-package.ts",
+    "test-package.js",
+    "test-types.ts"
+  ],
+  "tsc-alias": {
+    "resolveFullPaths": true
+  }
+}

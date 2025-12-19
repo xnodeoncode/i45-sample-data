@@ -71,3 +71,17 @@
 ### v2.1.3
 
 - Added movie list.
+
+## December 19, 2025
+
+### v2.2.0
+
+- **Added comprehensive TypeScript support** with full type definitions for all datasets.
+  - Exported 18+ TypeScript interfaces covering all collections, objects, and dictionaries.
+  - Consumers can now import types: `import { type Book, type TriviaQuestion, SampleData } from 'i45-sample-data'`
+  - Full IntelliSense and autocomplete support in TypeScript projects.
+  - Type definitions include: Book, TriviaQuestion, Album, Song, Player, Recipe, Student, State, Country, DailyWeather, KeyCodes, Movie, and more.
+  - Properly typed optional and nullable fields for accurate data modeling.
+  - Generic type support for `SampleData.fetch<T>()` method.
+- **100% backward compatible** - No breaking changes for existing JavaScript or TypeScript consumers.
+- All type declarations automatically included in package distribution.

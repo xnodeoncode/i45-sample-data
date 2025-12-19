@@ -1,7 +1,20 @@
-*.code-workspace
+/*
+* Ignore all files
+* except those that are explicitly included.
+*/
+/*
 
-.git/
-dist/
-node_modules/
+!src/**/*
+!public/**/*
+!.gitignore
+!.npmignore
+!CHANGES.md
+!.eslint.config.js
+!index.html
+!package-lock.json
+!package.json
+!tsconfig.json
+!tsconfig.production.json
+!tsconfig.app.json
 
 
