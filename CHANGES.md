@@ -96,3 +96,36 @@
   - Added backward compatibility section for deprecated properties.
   - Included feature highlights (TypeScript support, ESM, tree-shakeable).
   - Fixed fetch API example to show generic type parameter usage.
+
+### v3.0.0
+
+**BREAKING CHANGES:**
+
+- Error handling behavior changes may affect consumers not properly handling errors.
+- HTTP non-2xx responses now throw errors instead of attempting to parse.
+- Invalid content types now throw errors before parsing attempts.
+
+- **Added Node.js compatibility** for isomorphic package support.
+  - Replaced `window.fetch` with `globalThis.fetch` for cross-environment compatibility.
+  - Package now works in Node.js 18+ (with native fetch) and all modern browsers.
+  - Added helpful error messages when fetch is unavailable in older environments.
+  - Improved error handling - both `from()` and `fetch()` methods now properly throw errors.
+- **Enhanced package.json metadata** for better tooling support.
+  - Added explicit `main` field for CommonJS/Node.js compatibility.
+  - Added explicit `module` field for ES module bundlers.
+  - Added explicit `types` field for TypeScript definition discovery.
+  - Enhanced `exports` field with explicit `import` and `types` conditions.
+- **Added .npmignore** to exclude development files from published package.
+  - Excludes test files, build configs, and documentation not needed by consumers.
+  - Reduces package size and improves install times.
+- **Significantly improved error handling** in `from()` and `fetch()` methods.
+  - Added input validation for URI parameter with clear error messages.
+  - Added HTTP status code validation with detailed error messages including status code, status text, and URI.
+  - Added Content-Type validation to ensure responses are JSON before parsing.
+  - Improved error propagation - preserves Error instances and stack traces.
+  - Better error context - all error messages now include the failing URI for easier debugging.
+  - Removed console.error calls to let consumers handle logging appropriately.
+- **Made `apiKey` parameter optional** in `from()` method.
+  - API key is no longer required - only provide it when calling authenticated endpoints.
+  - The `x-api-key` header is only included when an API key is provided.
+  - Supports both public and authenticated API calls.

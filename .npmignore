@@ -1,0 +1,32 @@
+# Development and documentation files
+README.ts.md
+TYPESCRIPT-INTERFACES.md
+Project-Analysis.md
+
+# Test files
+test-package.js
+test-package.ts
+test-package.d.ts
+test-package.d.ts.map
+test-package.js.map
+test-types.ts
+
+# Build configuration
+tsconfig.json
+tsconfig.production.json
+tsconfig.app.json
+tsconfig.tsbuildinfo
+eslint.config.js
+vite.config.ts
+
+# Source files (only dist should be published)
+src/
+
+# Development tools
+backup/
+.vscode/
+*.log
+
+# Git files
+.git/
+.gitignore

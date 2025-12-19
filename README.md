@@ -176,27 +176,29 @@ export default App;
 
 ## Simple API Call
 
-The **from** method makes a get request using the browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns the results in JSON format.
+The **from** method makes a get request using the [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns the results in JSON format.
 
-An optional API_KEY can be passed as a second parameter.
+The `apiKey` parameter is optional - only provide it if your API requires authentication.
 
-NOTE: This method makes an HTTP Get request and, if present, passes the x-api-key in the request header. To make an HTTP Post request, or to include other headers such as custom content types, see the section [API Call with Custom Headers](#api-call-with-custom-headers).
+**Signature:** `SampleData.from(uri: string, apiKey?: string): Promise<any>`
+
+NOTE: This method makes an HTTP Get request and, if an API key is provided, passes it in the `x-api-key` request header. To make an HTTP Post request, or to include other headers such as custom content types, see the section [API Call with Custom Headers](#api-call-with-custom-headers).
 
 ```javascript
 import { SampleData } from "i45-sample-data";
 
-// Make an async API call to the provided endpoint.
-var data = await SampleData.from("https://jsonplaceholder.typicode.com/posts");
+// Make an async API call to a public endpoint (no API key needed)
+const data = await SampleData.from(
+  "https://jsonplaceholder.typicode.com/posts"
+);
+console.log(data);
 
-//or with an API_KEY
-
-var data = await SampleData.from(
-  "https://jsonplaceholder.typicode.com/posts",
+// Or with an API key for authenticated endpoints
+const protectedData = await SampleData.from(
+  "https://api.example.com/protected",
   "YOUR_API_KEY"
 );
-
-// the data is returned in json format.
-console.log(data);
+console.log(protectedData);
 ```
 
 ## API Call with Custom Headers
