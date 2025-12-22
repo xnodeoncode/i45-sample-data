@@ -162,3 +162,12 @@
   - Included TypeScript examples with tree-shakeable imports.
   - Documented bundle size optimization benefits.
 - **100% backward compatible** - No breaking changes, pure feature additions.
+
+### v3.1.1
+
+- **Added range() method to DataHelpers**
+  - `range()` - Filter items by property based on a range of values.
+- **Updated Test Methods**
+  - Added test methods to support the `filterWhere()` and the new `range()` methods.
+- **Updated README.md**
+  - Documented updates to helper methods with examples.

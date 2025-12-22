@@ -47,6 +47,21 @@ export class DataHelpers {
   }
 
   /**
+   * Filter items by property within a numeric range
+   * @param dataset - Array to filter
+   * @param key - Property key to filter by
+   * @param min - Minimum value
+   * @param max - Maximum value
+   * @returns Filtered array
+   */
+  static range<T>(dataset: T[], key: keyof T, min: any, max: any): T[] {
+    if (!Array.isArray(dataset)) {
+      throw new Error("Dataset must be an array");
+    }
+    return dataset.filter((item) => item[key] >= min && item[key] <= max);
+  }
+
+  /**
    * Filter by custom predicate function
    * @param dataset - Array to filter
    * @param predicate - Filter function

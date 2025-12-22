@@ -33,6 +33,45 @@ console.log(
   "items"
 );
 
+// numeric range
+const longBooks = DataHelpers.range(
+  SampleData.Collections.Books,
+  "pages",
+  400,
+  500
+);
+console.log(
+  "✓ DataHelpers.range('pages', 400, 500'):",
+  longBooks.length,
+  "items"
+);
+
+// text range
+const mediumBooks = DataHelpers.range(
+  SampleData.Collections.Books,
+  "title",
+  "M",
+  "R"
+);
+console.log(
+  "✓ DataHelpers.range('title', 'M', 'R'):",
+  mediumBooks.length,
+  "items",
+  mediumBooks
+);
+
+// filterWhere
+const intermediateQuestions = DataHelpers.filterWhere(
+  SampleData.Collections.TriviaQuestions,
+  (i) => i.difficulty == "easy" || i.difficulty == "medium"
+);
+console.log(
+  "✓ DataHelpers.filterWhere((i) => i.difficulty == 'easy' || i.difficulty == 'medium'):",
+  intermediateQuestions.length,
+  "items",
+  intermediateQuestions
+);
+
 // search
 const scienceQuestions = DataHelpers.search(
   SampleData.Collections.TriviaQuestions,

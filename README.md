@@ -196,7 +196,7 @@ const shuffledStates = SampleData.shuffle(SampleData.Lists.States);
 Import `DataHelpers` for advanced data manipulation utilities:
 
 ```typescript
-import { TriviaQuestions } from "i45-sample-data/collections";
+import { TriviaQuestions, Books } from "i45-sample-data/collections";
 import { DataHelpers } from "i45-sample-data/helpers";
 
 // Filter by difficulty
@@ -205,6 +205,15 @@ const easyQuestions = DataHelpers.filterBy(
   "difficulty",
   "easy"
 );
+
+// Filter with custom function
+const intermediateQuestions = DataHelpers.filterWhere(
+  TriviaQuestions,
+  (i) => i.difficulty == "easy" || i.difficulty == "medium"
+);
+
+// Filter where property values are between a min and max value.
+const longBooks = DataHelpers.range(Books, "pages", 300, 400);
 
 // Search across multiple fields
 const science = DataHelpers.search(TriviaQuestions, "science", [
@@ -235,6 +244,7 @@ const simplified = DataHelpers.pluck(TriviaQuestions, "question", "difficulty");
 - `filterBy()` - Filter by property value
 - `search()` - Search across string fields
 - `filterWhere()` - Filter with custom function
+- `range()` - Filter by property value within min and max
 - `groupBy()` - Group by property
 - `countBy()` - Count occurrences
 - `sortBy()` - Sort by property
