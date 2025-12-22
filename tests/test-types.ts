@@ -6,7 +6,7 @@ import {
   type Book,
   type TriviaQuestion,
   type Song,
-} from "./dist/index.js";
+} from "../dist/index.js";
 
 console.log("Testing TypeScript type exports...\n");
 
